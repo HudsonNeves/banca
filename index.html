@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão de Avaliação - IA na Programação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg,#0f172a,#1e293b);
+            color:#fff;
+            margin:0;
+            padding:0;
+            min-height: 100vh;
+        }
+
+        /* Header do Professor */
+        .professor-header {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid #334155;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .professor-info {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 40px;
+        }
+
+        .avatar {
+            background: #38bdf8;
+            color: #0f172a;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .professor-text h2 { margin: 0; font-size: 1.2rem; }
+        .professor-text p { margin: 5px 0 0; font-size: 0.85rem; color: #9ca3af; line-height: 1.4; }
+
+        .container { max-width:900px; margin:auto; padding:0 40px 40px; }
+
+        .card {
+            background:#111827;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 10px 40px rgba(0,0,0,0.4);
+            border: 1px solid #1e293b;
+        }
+
+        h1 { font-size:28px; margin-bottom:10px; color: #38bdf8; }
+        .subtitle { color:#9ca3af; margin-bottom:30px; font-weight: 300; }
+
+        .code {
+            background:#020617;
+            border-left:4px solid #38bdf8;
+            padding:20px;
+            border-radius:8px;
+            font-family: 'Fira Code', monospace;
+            margin:20px 0;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .options { margin-top:20px; }
+
+        .option {
+            background:#1f2937;
+            padding:18px;
+            border-radius:8px;
+            margin-bottom:12px;
+            cursor:pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .option:hover { background:#334155; transform: translateX(5px); }
+
+        /* Estados de correção */
+        .correct { background:#14532d !important; border-color: #22c55e !important; }
+        .wrong { background:#7f1d1d !important; border-color: #ef4444 !important; }
+        .disabled { pointer-events: none; opacity: 0.8; }
+
+        button {
+            margin-top:20px;
+            padding:14px 28px;
+            border:none;
+            border-radius:6px;
+            background:#38bdf8;
+            color:#0f172a;
+            font-weight:600;
+            cursor:pointer;
+            transition: 0.2s;
+        }
+
+        button:hover { background:#0ea5e9; transform: translateY(-2px); }
+
+        .explanation {
+            margin-top:30px;
+            padding:25px;
+            background:#020617;
+            border-radius:8px;
+            display:none;
+            border: 1px dashed #334155;
+            line-height: 1.6;
+        }
+
+        .explanation h3 { color: #38bdf8; margin-top: 0; }
+        strong { color: #38bdf8; }
+    </style>
+</head>
+
+<body>
+
+<div class="professor-header">
+    <div class="professor-info">
+        <div class="avatar">HN</div>
+        <div class="professor-text">
+            <h2>Profº Hudson Neves</h2>
+            <p>
+                Mestrando em Gestão, Educação e Tecnologias (PPGET – UEG)<br>
+                Professor de Desenvolvimento de Software | Especialista em Engenharia de Software
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h1>Questão de Avaliação</h1>
+        <p class="subtitle">Inteligência Artificial no Processo de Programação</p>
+
+        <p>Durante o desenvolvimento de um e-commerce, um programador implementou a seguinte função para calcular o total do carrinho:</p>
+
+        <div class="code">
+            function calcularTotal(itens) { <br>
+            &nbsp;&nbsp;let total = 0; <br>
+            &nbsp;&nbsp;for (let i = 0; i <strong><=</strong> itens.length; i++) { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;total += itens[i].preco; <br>
+            &nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;return total; <br>
+            }
+        </div>
+
+        <p>Assinale a alternativa correta considerando o erro no código e o apoio da IA:</p>
+
+        <div class="options" id="optionsContainer">
+            <div class="option" onclick="check(this, false, 'A')">A) A Inteligência Artificial pode substituir completamente o programador nesse cenário.</div>
+            <div class="option" onclick="check(this, false, 'B')">B) O erro ocorre porque a variável total não foi inicializada corretamente.</div>
+            <div class="option" onclick="check(this, true, 'C')">C) O erro ocorre porque a condição do laço permite acessar uma posição inexistente (undefined), e ferramentas de IA auxiliam na identificação do erro.</div>
+            <div class="option" onclick="check(this, false, 'D')">D) O erro ocorre porque a função deveria utilizar obrigatoriamente programação orientada a objetos.</div>
+            <div class="option" onclick="check(this, false, 'E')">E) O problema está relacionado estritamente ao tipo da variável itens.</div>
+        </div>
+
+        <button onclick="mostrarExplicacao()">Ver Correção Comentada</button>
+
+        <div class="explanation" id="explicacao">
+            <h3>Correção Comentada</h3>
+            <p>A alternativa correta é a <strong>C</strong>.</p>
+            
+            <p></p>
+
+            <p><strong>Análise Técnica:</strong> O erro está em <code>i <= itens.length</code>. Em JavaScript, arrays começam no índice 0. Se um array tem 3 itens, os índices são 0, 1 e 2. O <code>length</code> será 3. Ao tentar acessar o índice 3 (quando i é igual ao length), o sistema retorna <code>undefined</code>, causando um erro ao tentar somar com o total.</p>
+
+            <p><strong>O papel da IA:</strong> Ferramentas como Copilot ou ChatGPT identificam esse padrão instantaneamente, sugerindo a correção para <code>i < itens.length</code> ou o uso de <code>.reduce()</code>. Contudo, cabe ao desenvolvedor validar se a sugestão da IA não ignora regras de negócio específicas (como taxas ou descontos).</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function check(element, isCorrect, letra) {
+        const options = document.querySelectorAll(".option");
+        
+        options.forEach(opt => {
+            opt.classList.add("disabled");
+            // Se for a alternativa C, sempre destaca em verde ao final
+            if (opt.textContent.includes("C)")) {
+                opt.classList.add("correct");
+            }
+        });
+
+        if (!isCorrect) {
+            element.classList.add("wrong");
+        }
+    }
+
+    function mostrarExplicacao() {
+        const exp = document.getElementById("explicacao");
+        exp.style.display = "block";
+        exp.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
